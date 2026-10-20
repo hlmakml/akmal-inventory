@@ -1,0 +1,106 @@
+/**
+ * public/css/login.css
+ * --------------------------------------------------------------
+ * Gaya khusus halaman Login (app/views/auth/login.php). Diekstrak dari
+ * <style> inline di file itu -- isinya sama persis.
+ */
+
+/* ==========================================================
+   FONT: IBM Plex Sans (dihosting sendiri -- lihat public/libs/fonts/)
+   Sama seperti app.css; login.php punya <head> sendiri jadi filenya terpisah.
+   ========================================================== */
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../libs/fonts/ibm-plex-sans/ibm-plex-sans-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../libs/fonts/ibm-plex-sans/ibm-plex-sans-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../libs/fonts/ibm-plex-sans/ibm-plex-sans-600.woff2') format('woff2');
+}
+
+:root {
+            --ink: #17242D;
+            --steel: #1F4E5F;
+            --steel-dark: #173B48;
+            --amber: #F2A93B;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            color: var(--ink);
+            background: #fff;
+        }
+
+        /* Panel kiri (tampil di layar besar saja) */
+        .brand-panel {
+            background: var(--steel);
+            color: #fff;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3rem;
+        }
+
+        .brand-panel .brand-copy {
+            max-width: 26rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, .78);
+        }
+
+        /* Kotak login */
+        .login-box {
+            max-width: 24rem;
+        }
+
+        /* Logo A.K.M.A.L Inventory (versi untuk latar putih: teks biru-hijau baja + amber tua) */
+        .logo-akmal {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .logo-mark-bg { fill: var(--amber); }
+        .logo-mark-ink { fill: var(--steel); }
+        .logo-main { fill: var(--steel); }
+        .logo-sub { fill: #8A5200; }
+
+        /* Warna tombol & fokus mengikuti palet, bukan biru bawaan Bootstrap */
+        .btn-masuk {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: var(--steel);
+            --bs-btn-border-color: var(--steel);
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: var(--steel-dark);
+            --bs-btn-hover-border-color: var(--steel-dark);
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: var(--steel-dark);
+            --bs-btn-active-border-color: var(--steel-dark);
+            --bs-btn-focus-shadow-rgb: 31, 78, 95;
+            font-weight: 500;
+            padding-top: .7rem;
+            padding-bottom: .7rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--steel);
+            box-shadow: 0 0 0 .25rem rgba(31, 78, 95, .2);
+        }
+
+        .input-group-text {
+            background: #f4f6f7;
+            color: #5b6b75;
+        }

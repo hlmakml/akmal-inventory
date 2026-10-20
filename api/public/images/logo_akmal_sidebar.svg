@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 48">
+  <!-- Lambang: kotak amber dengan tiga peti kemas putih -->
+  <rect x="0" y="4" width="40" height="40" rx="9" style="fill:#f2a93b" />
+  <rect x="14" y="13" width="12" height="10" rx="1.5" style="fill:#1f4e5f" />
+  <rect x="7"  y="25" width="12" height="10" rx="1.5" style="fill:#1f4e5f" />
+  <rect x="21" y="25" width="12" height="10" rx="1.5" style="fill:#1f4e5f" />
+
+  <!-- Wordmark -->
+  <text x="52" y="24" style="font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:22px; font-weight:600; letter-spacing:1px; fill:#fff;">A.K.M.A.L</text>
+  <text x="53" y="41" style="font-family:'IBM Plex Sans', system-ui, sans-serif; font-size:13px; font-weight:500; letter-spacing:3.2px; fill:#f2a93b;">Inventory</text>
+</svg>

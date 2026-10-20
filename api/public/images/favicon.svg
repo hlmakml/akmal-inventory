@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <!-- Kotak amber melengkung -->
+  <rect x="0" y="0" width="40" height="40" rx="9" style="fill:#FFB100;" />
+
+  <!-- Tiga peti kemas biru-hijau baja -->
+  <rect x="14" y="9"  width="12" height="9" rx="1.5" style="fill:#1F4E5F;" />
+  <rect x="6"  y="22" width="12" height="9" rx="1.5" style="fill:#1F4E5F;" />
+  <rect x="22" y="22" width="12" height="9" rx="1.5" style="fill:#1F4E5F;" />
+</svg>

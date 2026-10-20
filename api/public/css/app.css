@@ -1,0 +1,582 @@
+/**
+ * public/css/app.css
+ * --------------------------------------------------------------
+ * Gaya bersama untuk semua halaman SETELAH login (dipakai lewat
+ * app/views/layout/header.php). Diekstrak dari <style> inline yang
+ * sebelumnya ada di file itu -- isinya sama persis, hanya dipindah
+ * ke file terpisah supaya bisa di-cache browser dan tidak diulang
+ * di setiap response HTML.
+ *
+ * Untuk gaya halaman LOGIN, lihat public/css/login.css (terpisah,
+ * karena auth/login.php punya <head> sendiri, tidak lewat header.php).
+ */
+
+/* ==========================================================
+   FONT: IBM Plex Sans (dihosting sendiri -- lihat public/libs/fonts/)
+   Path url() relatif terhadap file CSS ini (public/css/app.css),
+   BUKAN memakai BASEURL, karena file .css statis tidak diproses PHP.
+   ========================================================== */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../libs/fonts/ibm-plex-sans/ibm-plex-sans-400.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../libs/fonts/ibm-plex-sans/ibm-plex-sans-500.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../libs/fonts/ibm-plex-sans/ibm-plex-sans-600.woff2")
+    format("woff2");
+}
+
+/*file ini, supaya semua gaya
+ * halaman terkumpul dalam satu <head>.
+ */
+
+/* ---------- Palet (sama dengan halaman login) ---------- */
+        :root {
+  --ink: #17242d;
+  --steel: #1f4e5f;
+  --steel-dark: #173b48;
+  --amber: #f2a93b;
+  --paper: #f4f6f7;
+  --line: #e3e8ea;
+  --muted: #5b6b75;
+  --danger-solid: #dc3545;
+  --sidebar-w: 16.5rem;
+}
+
+body {
+  font-family:
+    "IBM Plex Sans",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* ==========================================================
+           SIDEBAR
+           - layar besar (>= 992px): tetap terlihat di sisi kiri
+           - layar kecil: tersembunyi, dibuka dengan tombol di top bar
+           ========================================================== */
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1045;
+  width: var(--sidebar-w);
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1rem 1.25rem;
+  background: var(--steel);
+  color: #fff;
+  overflow: hidden; /* tanpa scroll: tinggi penuh dan tidak bergeser */
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+
+body.sidebar-open .app-sidebar {
+  transform: none;
+}
+
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1044;
+  background: rgba(23, 36, 45, 0.55);
+}
+
+body.sidebar-open .sidebar-backdrop {
+  display: block;
+}
+
+/* Logo */
+.sidebar-brand {
+  display: block;
+  padding: 0 0.5rem;
+  margin-bottom: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.logo-akmal {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.logo-mark-bg {
+  fill: var(--amber);
+}
+.logo-mark-ink {
+  fill: var(--steel);
+}
+.logo-main {
+  fill: #fff;
+}
+.logo-sub {
+  fill: var(--amber);
+}
+
+/* Daftar menu */
+.sidebar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.sidebar-link .bi {
+  font-size: 1.1rem;
+}
+
+a.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+}
+
+.sidebar-link.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  box-shadow: inset 3px 0 0 var(--amber);
+}
+
+.sidebar-link.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.sidebar-soon {
+  margin-left: auto;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.app-sidebar a:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* Bagian bawah: info user + Logout (margin-top:auto mendorongnya ke dasar sidebar) */
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.5rem;
+  background: var(--danger-solid);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sidebar-logout:hover {
+  background: #bb2d3b;
+  color: #fff;
+}
+
+/* Top header: tetap di atas area konten (sticky), berisi judul halaman + nama dan role user */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 4rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.app-header-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--steel);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.app-header-toggle:focus-visible {
+  outline: 2px solid var(--steel);
+  outline-offset: 2px;
+}
+
+.app-header-judul {
+  min-width: 0;
+  line-height: 1.2;
+}
+
+/* Info user di kanan header: teks biasa (read-only), bukan tautan */
+.app-user {
+  margin-left: auto;
+  min-width: 0;
+  text-align: right;
+  line-height: 1.25;
+}
+
+.app-user-nama {
+  max-width: 10rem;
+  font-weight: 600;
+}
+
+.app-user-role {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+@media (min-width: 576px) {
+  .app-user-nama {
+    max-width: 16rem;
+  }
+}
+
+/* Area isi halaman */
+.app-main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 1.5rem;
+}
+
+.app-footer {
+  padding: 0 1rem 1.25rem;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .app-content {
+    padding: 1.75rem 1.75rem 2rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .app-header {
+    padding: 0.5rem 1.75rem;
+  }
+}
+
+/* Layar kecil: sidebar berupa laci. Di sini scroll tetap diizinkan sebagai
+           pengaman untuk HP yang diputar mendatar (tinggi layar sangat pendek). */
+@media (max-width: 991.98px) {
+  .app-sidebar {
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .app-sidebar {
+    transform: none;
+  }
+  .app-main {
+    margin-left: var(--sidebar-w);
+  }
+  .app-header-toggle {
+    display: none;
+  }
+  body.sidebar-open .sidebar-backdrop {
+    display: none;
+  }
+}
+
+/* Layar desktop yang pendek: rapatkan jarak supaya seluruh menu tetap muat tanpa scroll */
+@media (min-width: 992px) and (max-height: 640px) {
+  .app-sidebar {
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+  }
+  .sidebar-brand {
+    margin-bottom: 1.25rem;
+  }
+  .sidebar-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .sidebar-bottom {
+    padding-top: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-sidebar {
+    transition: none;
+  }
+}
+
+/* ==========================================================
+           CETAK (window.print)
+           Sembunyikan sidebar, header, tombol, dan filter; sisakan isi laporan
+           ========================================================== */
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  .app-sidebar,
+  .sidebar-backdrop,
+  .app-header,
+  .app-footer,
+  .no-print,
+  .alert,
+  .modal,
+  .btn {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: #fff !important;
+  }
+  .app-main {
+    margin-left: 0 !important;
+  }
+  .app-content {
+    max-width: none;
+    padding: 0;
+  }
+
+  .card-app {
+    border: 1px solid #9aa5ab;
+    break-inside: auto;
+  }
+  .table-responsive {
+    overflow: visible !important;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr {
+    break-inside: avoid;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* pertahankan warna label & angka saat dicetak */
+  .badge,
+  .stat-icon,
+  .qty-masuk,
+  .qty-keluar,
+  .badge-kritis {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* ==========================================================
+           KOMPONEN UMUM
+           ========================================================== */
+.card-app {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.btn-steel {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--steel);
+  --bs-btn-border-color: var(--steel);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--steel-dark);
+  --bs-btn-hover-border-color: var(--steel-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--steel-dark);
+  --bs-btn-active-border-color: var(--steel-dark);
+  --bs-btn-focus-shadow-rgb: 31, 78, 95;
+  font-weight: 500;
+}
+
+/* Tombol aksen amber (teks gelap agar kontras) */
+.btn-amber {
+  --bs-btn-color: var(--ink);
+  --bs-btn-bg: var(--amber);
+  --bs-btn-border-color: var(--amber);
+  --bs-btn-hover-color: var(--ink);
+  --bs-btn-hover-bg: #e0972a;
+  --bs-btn-hover-border-color: #e0972a;
+  --bs-btn-active-color: var(--ink);
+  --bs-btn-active-bg: #d18a20;
+  --bs-btn-active-border-color: #d18a20;
+  --bs-btn-focus-shadow-rgb: 242, 169, 59;
+  font-weight: 600;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--steel);
+  box-shadow: 0 0 0 0.25rem rgba(31, 78, 95, 0.2);
+}
+
+.form-check-input:checked {
+  background-color: var(--steel);
+  border-color: var(--steel);
+}
+
+.form-check-input:focus {
+  border-color: var(--steel);
+  box-shadow: 0 0 0 0.25rem rgba(31, 78, 95, 0.2);
+}
+
+.input-group-text {
+  background: var(--paper);
+  color: var(--muted);
+}
+
+.text-muted-app {
+  color: var(--muted);
+}
+
+/* ---------- Tabel ---------- */
+.table-app thead th {
+  background: var(--paper);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line);
+}
+
+.table-app td {
+  border-color: var(--line);
+}
+
+/* ---------- Kartu statistik ---------- */
+.stat-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.stat-icon.steel {
+  background: rgba(31, 78, 95, 0.1);
+  color: var(--steel);
+}
+
+.stat-icon.amber {
+  background: rgba(242, 169, 59, 0.2);
+  color: #8a5200;
+}
+
+.stat-icon.red {
+  background: #fdecea;
+  color: #b42318;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ---------- Status stok & jenis transaksi ---------- */
+.badge-kritis {
+  background: #fdecea;
+  color: #b42318;
+  font-weight: 500;
+}
+
+.badge-masuk {
+  background: rgba(31, 78, 95, 0.12);
+  color: var(--steel);
+  font-weight: 500;
+}
+
+.badge-keluar {
+  background: #fdecea;
+  color: #b42318;
+  font-weight: 500;
+}
+
+/* ---------- Label role pengguna ---------- */
+.badge-role-admin {
+  background: rgba(31, 78, 95, 0.12);
+  color: var(--steel);
+  font-weight: 500;
+}
+
+.badge-role-staff {
+  background: #eef1f2;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ---------- Jumlah pada riwayat transaksi ---------- */
+.qty-masuk {
+  color: var(--steel);
+  font-weight: 600;
+}
+
+.qty-keluar {
+  color: #b42318;
+  font-weight: 600;
+}
+
+.alert-kritis {
+  background: #fef6e7;
+  border: 1px solid #f2d9a6;
+  border-left: 4px solid var(--amber);
+  color: #5c3a00;
+  border-radius: 0.5rem;
+}

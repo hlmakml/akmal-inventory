@@ -15,11 +15,8 @@ Sistem manajemen inventory gudang berbasis web dengan arsitektur MVC untuk track
 - [Penggunaan](#penggunaan)
 - [Struktur Folder](#struktur-folder)
 - [Akun Demo](#akun-demo)
-- [Dokumentasi](#dokumentasi)
 - [Troubleshooting](#troubleshooting)
-- [Kontribusi](#kontribusi)
-- [Lisensi](#lisensi)
-
+  
 ---
 
 ## Fitur Utama
@@ -137,8 +134,6 @@ akmal_inventory/
 │   └── libs/
 ├── .htaccess
 ├── README.md
-├── pemetaan_dan_analisis_projek.md
-└── PENJELASAN_MVC_DAN_CORE.md
 ```
 
 ---
@@ -152,14 +147,8 @@ akmal_inventory/
 ### Staff Gudang
 - **Username:** `staff01`
 - **Password:** `staff123`
-
----
-
-## Dokumentasi
-
-Dokumentasi detail tersedia pada file berikut di root direktori proyek:
-1. `pemetaan_dan_analisis_projek.md` - Analisis berdasarkan SKKNI No. 282 Tahun 2016.
-2. `PENJELASAN_MVC_DAN_CORE.md` - Penjelasan arsitektur MVC dan komponen Core.
+- **Username:** `staff02`
+- **Password:** `staff123`
 
 ---
 
@@ -168,9 +157,3 @@ Dokumentasi detail tersedia pada file berikut di root direktori proyek:
 - **Database Connection Failed:** Pastikan layanan MySQL aktif dan kredensial pada `app/config/config.php` sudah benar.
 - **403 Forbidden / URL Not Found:** Pastikan modul `mod_rewrite` pada Apache aktif dan pengaturan virtual host / `.htaccess` sudah sesuai.
 - **Transaksi Gagal:** Pastikan engine database menggunakan InnoDB dan ketersediaan stok mencukupi untuk transaksi barang keluar.
-
----
-
-## Lisensi
-
-Proyek ini dilisensikan di bawah **MIT License**.

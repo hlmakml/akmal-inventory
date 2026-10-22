@@ -169,7 +169,7 @@ class Transaksi extends Controller
 
     private function validasiJumlah($nilai)
     {
-        return filter_var($nilai, FILTER_VALIDATE_INT, [
+       return filter_var($nilai, FILTER_VALIDATE_INT, [ 
             'options' => ['min_range' => 1, 'max_range' => 2147483647],
         ]);
     }

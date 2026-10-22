@@ -117,7 +117,7 @@ class Transaksi_model
 
             // Cek stok cukup
             if ((int) $data['jumlah'] > (int) $barang['stok']) {
-                $this->db->rollBack();
+               $this->db->rollBack();
                 return $this->hasil(false, sprintf(
                     'Stok tidak mencukupi! Stok %s saat ini hanya %s %s.',
                     $barang['nama_barang'],
@@ -146,7 +146,7 @@ class Transaksi_model
             $this->db->execute();
 
             // Update stok
-            $this->db->query('UPDATE barang SET stok = stok - :jumlah WHERE id = :id AND stok >= :jumlah_cek');
+            $this->db->query('UPDATE barang SET stok = stok - :jumlah WHERE id = :id'); //AND stok >= :jumlah_cek'
             $this->db->bind(':jumlah', $data['jumlah']);
             $this->db->bind(':id', $data['barang_id']);
             $this->db->bind(':jumlah_cek', $data['jumlah']);

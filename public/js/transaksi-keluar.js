@@ -24,13 +24,13 @@
             if (!opsi.value) {
                 infoStok.textContent = 'Pilih barang untuk melihat stok yang tersedia.';
                 satuan.textContent = 'satuan';
-                jumlah.removeAttribute('max');
+                //jumlah.removeAttribute('max');
             } else {
                 var stok = Number(opsi.getAttribute('data-stok'));
                 var unit = opsi.getAttribute('data-satuan');
                 infoStok.textContent = 'Stok tersedia: ' + stok.toLocaleString('id-ID') + ' ' + unit;
                 satuan.textContent = unit;
-                jumlah.setAttribute('max', stok);
+                //jumlah.setAttribute('max', stok);
             }
             cekJumlah();
         });

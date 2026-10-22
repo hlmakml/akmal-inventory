@@ -3,7 +3,7 @@
 // Sidebar toggle for mobile
 (function () {
     var body = document.body;
-    var tombol = document.getElementById('sidebarToggle');
+    var tombol = document.getElementById('sidebarToggle'); 
     var latar = document.getElementById('sidebarBackdrop');
     if (!tombol || !latar) { return; }
 

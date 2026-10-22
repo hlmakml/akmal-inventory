@@ -11,8 +11,6 @@ Sistem manajemen inventory gudang berbasis web dengan arsitektur MVC untuk track
 - [Fitur Utama](#fitur-utama)
 - [Teknologi Stack](#teknologi-stack)
 - [Instalasi](#instalasi)
-- [Konfigurasi](#konfigurasi)
-- [Penggunaan](#penggunaan)
 - [Struktur Folder](#struktur-folder)
 - [Akun Demo](#akun-demo)
 - [Troubleshooting](#troubleshooting)
